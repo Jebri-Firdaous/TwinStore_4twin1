@@ -1,0 +1,181 @@
+/* Navbar general style */
+.navbar {
+  background-color: white;
+  padding: 10px 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4786eb;
+}
+
+.navbar-nav .nav-link {
+  font-size: 16px;
+  color: #333;
+  padding: 10px 20px;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #4786eb;
+}
+
+.navbar-nav .nav-link.active {
+  color: #4786eb;
+}
+
+.nav-item {
+  margin-right: 15px;
+}
+
+/* Adjusting the collapse button */
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-toggler-icon {
+  color: #333;
+}
+
+/* Custom styles for the icons (optional if needed) */
+.navbar-icons {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-icons a {
+  text-decoration: none;
+  font-size: 20px;
+  margin: 0 10px;
+  position: relative;
+  color: #333;
+}
+
+.navbar-icons a:hover {
+  color: #4786eb; /* Correction de la couleur */
+}
+
+.navbar-icons .notification-badge {
+  color: white;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 2px 5px;
+  position: absolute;
+  top: -8px;
+  right: -10px;
+}
+
+.phone-number {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #333;
+}
+
+/* Style par défaut du bouton de recherche */
+.btn-outline-success {
+  border-color: transparent;
+  color: #4786eb;
+  border-color: #4786eb;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effet hover pour changer le fond et la couleur du texte */
+.btn-outline-success:hover {
+  background-color: #4786eb;
+  color: white;
+}
+
+/* Style personnalisé pour le bouton de connexion */
+.btn-primary {
+  background-color: white; /* Couleur par défaut */
+  color: #4d4dec;
+  font-weight: bold;
+  border: solid 0.5px #4786eb;
+  transition: background-color 0.3s ease;
+  margin-top: 5px;
+  margin-left: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #4786eb; /* Couleur lors du hover */
+  color: white;
+}
+
+.navbar-dark .nav-link {
+  color: white;
+}
+
+.navbar-dark .nav-link:hover {
+  color: #4786eb; /* Couleur plus claire au survol */
+}
+
+/* Espacement à gauche pour l'input de recherche */
+.navbar .form-control {
+  margin-left: 20px; /* Ajustez cette valeur selon vos besoins */
+}
+
+/* --------- Styles Responsives pour les petits écrans --------- */
+@media (max-width: 992px) {
+  /* Masquer les liens de navigation dans le menu mobile */
+  .navbar-collapse {
+    position: fixed;            /* Position fixe pour que le menu reste visible */
+    top: 70px;                 /* Ajustez cette valeur pour ajouter un espace en dessous du header */
+    right: 0;                  /* Alignement à droite */
+    height: calc(100% - 70px); /* Hauteur du menu en tenant compte de la hauteur du header */
+    width: 250px;              /* Largeur du menu */
+    background-color: white;   /* Couleur de fond */
+    transform: translateX(100%); /* Déplacer hors de l'écran à droite */
+    transition: transform 0.3s ease-in-out; /* Transition douce */
+    z-index: 1050;             /* Assurez-vous qu'il est au-dessus des autres éléments */
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Ombre pour le menu */
+  }
+
+  /* Le menu glisse depuis la droite lorsqu'il est ouvert */
+  .navbar-collapse.show {
+    transform: translateX(0);  /* Réinitialiser la translation pour montrer le menu */
+  }
+
+  /* Liens du menu en colonne */
+  .navbar-nav {
+    flex-direction: column;     /* Colonne pour les éléments du menu */
+    align-items: flex-start;    /* Alignement à gauche */
+  }
+
+  .nav-item {
+    width: 100%;                /* Chaque item prend 100% de la largeur */
+    margin-left: 2px;
+  }
+
+  .nav-link {
+    padding: 15px;              /* Espacement intérieur */
+    text-align: left;           /* Alignement du texte à gauche */
+    width: 100%;                /* Chaque lien prend 100% de la largeur */
+  }
+
+  /* Garder le bouton hamburger visible */
+  .navbar-toggler {
+    position: fixed;            /* Rester en haut à droite */
+    right: 10px;                /* Position droite */
+    top: 10px;                  /* Position haute */
+    z-index: 1100;              /* Au-dessus des autres éléments */
+  }
+
+  .navbar-toggler-icon {
+    color: #333;                /* Couleur de l'icône */
+  }
+
+  /* Le formulaire de recherche et le bouton connexion passent avant le menu */
+  .navbar-collapse form,
+  .navbar-collapse .btn-primary {
+    order: -1;
+    margin-bottom: 15px;
+    width: 100%;                /* Prendre toute la largeur */
+  }
+
+  .form-control {
+    width: calc(100% - 40px);   /* Largeur complète moins les marges */
+    margin-left: 10px;          /* Ajuster la marge */
+  }
+}

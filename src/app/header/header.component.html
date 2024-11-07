@@ -1,0 +1,35 @@
+<nav [ngClass]="isAdmin ? 'navbar navbar-expand-lg navbar-dark bg-dark' : 'navbar navbar-expand-lg navbar-light bg-light' ">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="../../../assets/logo-image.png" alt="Logo TWINStore" width="30" height="30" class="me-2">
+          TWINStore
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Barre de recherche à droite -->
+        <form class="d-flex me-3">
+            <input class="form-control me-2" type="search" placeholder="Rechercher un produit" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">🔍</button>
+        </form>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Menu -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Produits</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">À propos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+            <!-- Bouton de connexion -->
+            <a href="#" class="btn btn-primary">Connexion</a>
+        </div>
+    </div>
+</nav>

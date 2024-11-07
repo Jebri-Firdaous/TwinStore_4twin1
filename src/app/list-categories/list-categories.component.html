@@ -1,0 +1,27 @@
+<div class="container">
+  <h2 class="text-center my-4">Catégories de Produits</h2>
+
+  <!-- Zone de recherche avec ngModel pour la liaison bidirectionnelle -->
+  <div class="form-group">
+    <input type="text" class="form-control" id="find" placeholder="Titre catégorie" [(ngModel)]="titre" #title="ngModel">
+  </div><br/>
+
+  <!-- Affichage des catégories, centrez les cartes -->
+  <div class="row d-flex justify-content-center">
+    
+    <div class="col-md-4 mb-4" *ngFor="let categorie of categories | contains:titre">
+      <!-- Utilisation de NgIf pour filtrer les catégories selon la valeur du titre -->
+      <div *ngIf="titre === '' || categorie.title.toLowerCase().includes(titre.toLowerCase())">
+        <div class="card text-center">
+          <img [src]="categorie.image" class="card-img-top" [alt]="categorie.title" (click)="getDescription(categorie.description)">
+          <div class="card-body">
+            <h3 class="card-title">{{ categorie.title | uppercase }}</h3>
+            <p class="card-text">{{ categorie.description }}</p>
+            <button *ngIf="categorie.available" class="btn btn-primary" style="font-weight: bold;">Voir produits</button>
+            <span *ngIf="!categorie.available" style="color: red; font-weight: bold;">Catégorie non disponible</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
