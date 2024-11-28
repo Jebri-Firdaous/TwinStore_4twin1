@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';  // Ajoutez ceci
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,24 +12,15 @@ import { ContainsPipe } from './contains.pipe'; // Importer le pipe ici
 import { FilterPipe  } from './filter.pipe';
 import { HighlightDirective } from './highlight.directive'; // Importez la directive
 import { NotFoundComponent } from './not-found/not-found.component';
-import { CProductComponent } from './product/c-product/c-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-
+import { ProductsComponent } from './products/products.component';
 
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CContactComponent } from './contact/c-contact/c-contact.component';
+import { ProductsCategoryComponent } from './products-category/products-category.component';
 
 
-const ROUTES: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'categorie', component: ListCategoriesComponent },
-  { path: 'product', component: CProductComponent },
-  { path: 'contact', component: CContactComponent},
-  { path: 'form', component: AddProductComponent },
-  { path: '**', component: NotFoundComponent },
-
-];
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,15 +33,19 @@ const ROUTES: Routes = [
     FilterPipe,
     HighlightDirective,
     NotFoundComponent,
-    AddProductComponent
-  ],
+    AddProductComponent,
+    ProductsCategoryComponent,
+    ProductsComponent
+  
+    
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(ROUTES),
+    
     FormsModule  // Ajoutez FormsModule ici
   ],
-  providers: [],
+  providers: [Title],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,5 +4,6 @@ export class Categorie
   title : string;
   image: string;
   description : string;
+  nbrLike:number;
   available : boolean;
 }

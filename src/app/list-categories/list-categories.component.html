@@ -1,8 +1,5 @@
 <div class="container">
-  <h2 class="text-center my-4">Catégories de Produits</h2>
-  <!--<div appHighlight>
-    Passez la souris sur moi pour voir l'effet de surbrillance !
-  </div>-->
+  <h2 class="text-center my-4">Catégories de Vêtements</h2>
   <div class="form-group">
     <input 
       type="text" 
@@ -15,9 +12,20 @@
   </div><br/>
 
   <div class="row d-flex justify-content-center">
-    <div class="col-md-4 mb-4" *ngFor="let categorie of filteredCategories"> <!-- Utilisation de filteredCategories -->
-      <div class="card text-center">
+    <div class="col-md-4 mb-4" *ngFor="let categorie of filteredCategories">
+      <div class="card text-center position-relative">
+        <!-- Image du produit -->
         <img [src]="categorie.image" class="card-img-top" [alt]="categorie.title" (click)="getDescription(categorie.title, categorie.description)">
+        
+        <!-- Bouton "like" superposé sur l'image -->
+        <button 
+          [disabled]="!categorie.available" 
+          class="btn like-btn position-absolute"
+          (click)="addLike(categorie)">
+          <i class="fa fa-heart"></i> {{ categorie.nbrLike }}
+        </button>
+
+        <!-- Corps de la carte -->
         <div class="card-body">
           <h3 class="card-title">{{ categorie.title | uppercase }}</h3>
           <button *ngIf="categorie.available" class="btn btn-primary" style="font-weight: bold;">Voir produits</button>
@@ -25,10 +33,15 @@
         </div>
       </div>
     </div>
-    
-    <!-- Affichage d'un message si aucune catégorie n'est trouvée -->
+
     <div *ngIf="(filteredCategories.length === 0 && titre !== '')" class="col-md-12 text-center">
       <p style="color: red; font-weight: bold;">Aucune catégorie trouvée avec le nom "{{ titre }}".</p>
     </div>
   </div>
 </div>
+<script>
+  const likeButton = document.querySelector('.like-btn');
+  likeButton.addEventListener('click', function() {
+    likeButton.classList.toggle('clicked');
+  });
+</script>
