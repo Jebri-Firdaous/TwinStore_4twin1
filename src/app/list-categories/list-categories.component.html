@@ -16,10 +16,9 @@
   <div class="row d-flex justify-content-center">
     <div class="col-md-4 mb-4" *ngFor="let categorie of filteredCategories">
       <div class="card text-center position-relative">
-        <!-- Image du produit -->
         <img [src]="categorie.image" class="card-img-top" [alt]="categorie.title" (click)="getDescription(categorie.title, categorie.description)">
         
-        <!-- Bouton "like" superposé sur l'image -->
+        <!-- Bouton "like" -->
         <button 
           [disabled]="!categorie.available" 
           class="btn like-btn position-absolute"
@@ -27,7 +26,6 @@
           <i class="fa fa-heart"></i> {{ categorie.nbrLike }}
         </button>
 
-        <!-- Corps de la carte -->
         <div class="card-body">
           <h3 class="card-title">{{ categorie.title | uppercase }}</h3>
           <button *ngIf="categorie.available" class="btn btn-primary" style="font-weight: bold;"        

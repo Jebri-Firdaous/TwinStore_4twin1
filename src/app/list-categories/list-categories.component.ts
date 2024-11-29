@@ -27,23 +27,18 @@ export class ListCategoriesComponent {
   ];
 
   constructor() {
-    // Initialisez filteredCategories avec toutes les catégories
     this.filteredCategories = this.categories;
   }
 
-  // Méthode pour filtrer et trier les catégories
   filterCategories() {
     if (this.titre === '') {
-      // Si le titre est vide, affichez toutes les catégories
       this.filteredCategories = this.categories;
     } else {
-      // Sinon, filtrez les catégories en fonction du titre
       this.filteredCategories = this.categories
         .filter(categorie => categorie.title.toLowerCase().includes(this.titre.toLowerCase()))
-        .sort((a, b) => a.title.localeCompare(b.title)); // Trie par titre
+        .sort((a, b) => a.title.localeCompare(b.title)); 
     }
   
-    // Vérification si aucune catégorie n'est trouvée
     if (this.filteredCategories.length === 0) {
       this.showNoCategoriesFoundAlert();
     }

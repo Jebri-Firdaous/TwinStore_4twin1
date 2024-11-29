@@ -22,9 +22,10 @@ height: 100%;
   }
   
   .custom-btn:hover {
-    background-color: #3571c2; /* Couleur plus foncée lors du survol */
+    background-color: #3571c2;
     border-color: #3571c2;
   }
   .vh-100 {
-    background-color: #cdd9eb; /* Remplacez par la couleur de fond de votre choix */
+    background-color: #cdd9eb; 
 }
+

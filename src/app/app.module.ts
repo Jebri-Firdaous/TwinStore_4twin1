@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';  // Ajoutez ceci
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
@@ -23,8 +22,7 @@ import { ProductsCategoryComponent } from './products-category/products-category
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
-    HeaderComponent,
+ HeaderComponent,
     FooterComponent,
     HomeComponent,
     ListCategoriesComponent,
@@ -34,7 +32,9 @@ import { ProductsCategoryComponent } from './products-category/products-category
     NotFoundComponent,
     AddProductComponent,
     ProductsCategoryComponent,
-    ProductsComponent
+    ProductsComponent,
+    NotFoundComponent,
+
   
     
     ],

@@ -14,23 +14,23 @@ export class ProductsComponent {
 
 
   list: Product[] = [];
-  filteredList: Product[] = []; // Pour stocker les produits filtrés
-  showAvailabilityFilter: boolean = false; // Propriété pour contrôler l'affichage du filtre de disponibilité
-  selectedAvailability: string = ''; // Pour stocker la sélection de disponibilité
-  showCategorieFilter: boolean = false; // Assurez-vous qu'elle est true si vous voulez afficher la div
+  filteredList: Product[] = []; 
+  showAvailabilityFilter: boolean = false; 
+  selectedAvailability: string = ''; 
+  showCategorieFilter: boolean = false; 
   ShowPriceFilter: boolean = false;
   ShowNomSearch: boolean = false;
 
 
   ngOnInit() {
     this.list = this.listProducts;
-    this.filteredList = this.list; // Initialiser avec tous les produits
+    this.filteredList = this.list; 
   }
   onPriceChange(order: string): void {
     if (order === 'asc') {
-      this.filteredList = [...this.filteredList].sort((a, b) => a.price - b.price); // Sort ascending
+      this.filteredList = [...this.filteredList].sort((a, b) => a.price - b.price); 
     } else if (order === 'desc') {
-      this.filteredList = [...this.filteredList].sort((a, b) => b.price - a.price); // Sort descending
+      this.filteredList = [...this.filteredList].sort((a, b) => b.price - a.price); 
     }
   }
 
@@ -38,21 +38,19 @@ export class ProductsComponent {
     const selectElement = event.target as HTMLSelectElement;
     const selectedFilter = selectElement.value;
   
-    // Affiche ou masque les filtres basés sur la sélection
     this.showAvailabilityFilter = selectedFilter === 'availability';
     this.showCategorieFilter = selectedFilter === 'category';
     this.ShowPriceFilter = selectedFilter === 'price';
     this.ShowNomSearch = selectedFilter === 'Nom';
   
-    // Si le filtre est 'availability', on filtre directement les produits avec availability = true
     if (this.showAvailabilityFilter) {
       this.filteredList = this.list.filter(product => product.availability === true);
     } else {
-      // Si aucun filtre de disponibilité n'est sélectionné, réinitialiser la liste filtrée
+
       this.filteredList = this.list;
     }
   
-    // Si aucun autre filtre n'est sélectionné, réinitialise la liste filtrée
+
     if (!this.showAvailabilityFilter && !this.showCategorieFilter && !this.ShowPriceFilter && !this.ShowNomSearch) {
       this.filteredList = this.list;
     }
@@ -66,7 +64,7 @@ export class ProductsComponent {
         product => product.categoryId === parseInt(selectedCategoryId, 10)
       );
     } else {
-      this.filteredList = this.list; // Réinitialise si aucune catégorie n'est sélectionnée
+      this.filteredList = this.list; 
     }
   }
   selectedCategoryId: string = '';
@@ -76,13 +74,12 @@ export class ProductsComponent {
     const selectElement = event.target as HTMLSelectElement;
     this.selectedAvailability = selectElement.value;
   
-    // Filtrer les produits disponibles si 'availability' est sélectionné
     if (this.selectedAvailability === 'true') {
       this.filteredList = this.list.filter(product => product.availability === true);
     } else if (this.selectedAvailability === 'false') {
       this.filteredList = this.list.filter(product => product.availability === false);
     } else {
-      // Réinitialiser si aucune disponibilité spécifique n'est sélectionnée
+
       this.filteredList = this.list;
     }
   }
@@ -97,16 +94,16 @@ export class ProductsComponent {
   }
   filterProduits() {
     if (this.name === '') {
-      // Si le titre est vide, affichez toutes les catégories
+
       this.filteredList = this.listProducts;
     } else {
-      // Sinon, filtrez les catégories en fonction du titre
+
       this.filteredList = this.listProducts
         .filter(categorie => categorie.name.toLowerCase().includes(this.name.toLowerCase()))
         .sort((a, b) => a.name.localeCompare(b.name)); // Trie par titre
     }
   
-    // Vérification si aucune catégorie n'est trouvée
+
     if (this.filteredList.length === 0) {
       this.showNoProductsFoundAlert();
     }
@@ -119,7 +116,7 @@ export class ProductsComponent {
       confirmButtonText: 'Ok'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Réinitialiser la liste lorsque l'utilisateur clique sur 'Ok'
+
         this.filteredList = [...this.list];
       }
     });

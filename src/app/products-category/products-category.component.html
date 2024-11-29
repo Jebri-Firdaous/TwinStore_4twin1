@@ -6,31 +6,31 @@
   </div>
   <div class="row">
     <div class="col-12" *ngFor="let product of list" style="margin-bottom: 30px;">
-      <!-- Card structure -->
+
       <div class="card position-relative" style="border: 1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
         
-        <!-- Disponibilité superposée -->
+
         <div class="availability-badge" 
              [ngClass]="product.availability ? 'in-stock' : 'out-of-stock'">
           {{ product.availability ? 'En stock' : 'Épuisé' }}
         </div>
 
         <div class="row no-gutters">
-          <!-- Column 1: Product image -->
+
           <div class="col-md-4">
             <img [src]="product.image" [alt]="product.name" class="card-img" style="border-radius: 10px; height: 300px; object-fit: cover;">
           </div>
 
-          <!-- Column 2: Title and Description -->
+
           <div class="col-md-4">
             <div class="card-body">
-              <!-- Product Name -->
+
               <h4 class="card-title" style="font-weight: bold; color: #333;">{{product.name}}</h4>
               
-              <!-- Product Description -->
+
               <p class="card-text" style="font-size: 0.9rem; color: #555;">{{product.description}}</p>
-                <!-- Product Brand -->
-                <h6 style="margin-top: 15px;">
+
+              <h6 style="margin-top: 15px;">
                   <span style="
                     display: inline-block;
                     background-color: #f8f9fa;
@@ -47,7 +47,6 @@
                   </span>
                 </h6>
   
-                <!-- Product Promotion (only display if promotion > 0) -->
                 <div *ngIf="product.promotion > 0" class="promotion-badge">
                   <i class="fas fa-percent" style="margin-right: 5px;"></i>
                   {{ product.promotion }}
@@ -55,7 +54,6 @@
             </div>
           </div>
 
-          <!-- Column 3: Add to Cart button and Price -->
           <div class="col-md-4">
             <div class="card-body">
               <h6 style="color: #4786eb; font-size: 30px; font-weight: bold;">

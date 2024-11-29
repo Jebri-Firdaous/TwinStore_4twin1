@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../models/products';
-import { Location } from '@angular/common'; // Importation de Location pour revenir en arrière
+import { Location } from '@angular/common'; 
 
 
 @Component({
@@ -13,8 +13,8 @@ import { Location } from '@angular/common'; // Importation de Location pour reve
 export class ProductsCategoryComponent {
   id: number ;
   constructor(
-    private ac: ActivatedRoute, // Injecter ActivatedRoute pour accéder aux paramètres de la route
-    private location: Location // Injecter Location pour pouvoir revenir en arrière
+    private ac: ActivatedRoute, 
+    private location: Location 
   ) {}
   list : Product[]=[];
   ngOnInit() {
