@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="mb-4">
+    <button class="back" (click)="goBack()">
+      <i class="fa fa-arrow-left"></i> Retour
+    </button>
+  </div>
   <div class="row">
     <div class="col-12" *ngFor="let product of list" style="margin-bottom: 30px;">
       <!-- Card structure -->
@@ -19,8 +24,34 @@
           <!-- Column 2: Title and Description -->
           <div class="col-md-4">
             <div class="card-body">
-              <h5 class="card-title" style="font-size: 1.2rem; font-weight: bold; color: #333;">{{product.name}}</h5>
+              <!-- Product Name -->
+              <h4 class="card-title" style="font-weight: bold; color: #333;">{{product.name}}</h4>
+              
+              <!-- Product Description -->
               <p class="card-text" style="font-size: 0.9rem; color: #555;">{{product.description}}</p>
+                <!-- Product Brand -->
+                <h6 style="margin-top: 15px;">
+                  <span style="
+                    display: inline-block;
+                    background-color: #f8f9fa;
+                    color: #007bff;
+                    font-weight: bold;
+                    padding: 5px 10px;
+                    border-radius: 15px;
+                    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                    font-size: 0.9rem;
+                    text-transform: uppercase;
+                  ">
+                    <i class="fas fa-tag" style="margin-right: 5px; color: #007bff;"></i>
+                    {{product.brand}}
+                  </span>
+                </h6>
+  
+                <!-- Product Promotion (only display if promotion > 0) -->
+                <div *ngIf="product.promotion > 0" class="promotion-badge">
+                  <i class="fas fa-percent" style="margin-right: 5px;"></i>
+                  {{ product.promotion }}
+                </div>
             </div>
           </div>
 

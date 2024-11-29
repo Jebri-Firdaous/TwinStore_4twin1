@@ -1,0 +1,127 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* About Header */
+.about-header {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #4786eb;
+    color: #fff;
+}
+
+.about-header h1 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.brand-name {
+    font-weight: bold;
+    color: #f5f5f5;
+}
+
+.intro-text {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+/* About Content */
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 50px 0;
+}
+
+.about-content .image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-content .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.about-content .text {
+    flex: 2;
+    color: #333;
+}
+
+.about-content h2 {
+    font-size: 24px;
+    margin-top: 20px;
+    color: #4786eb;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.about-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.about-content ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.about-content ul li strong {
+    color: #4786eb;
+}
+
+/* Mission */
+.mission {
+    background-color: #f4f4f4;
+    padding: 30px 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+.mission h2 {
+    font-size: 24px;
+    color: #4786eb;
+}
+
+.mission p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+/* Style de l'image */
+.about-content .image {
+    flex: 1;
+    text-align: center;
+    overflow: hidden; /* Assure que l'image reste à l'intérieur du conteneur */
+    border-radius: 10px; /* Bordures arrondies pour l'effet esthétique */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet de profondeur */
+    position: relative;
+    height: 100%; /* Remplir toute la hauteur de la div parent */
+}
+
+.about-content .image img {
+    width: 100%; /* L'image prend toute la largeur du conteneur */
+    height: 100%; /* L'image prend toute la hauteur du conteneur */
+    object-fit: cover; /* Maintient le ratio de l'image tout en couvrant la zone du conteneur */
+    border-radius: 10px; /* Bordures arrondies sur l'image elle-même */
+}

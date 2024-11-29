@@ -1,5 +1,7 @@
+
 <div class="container">
-  <h2 class="text-center my-4">Catégories de Vêtements</h2>
+
+  <h2 class="text-center my-4">Catégories de produits</h2>
   <div class="form-group">
     <input 
       type="text" 
@@ -28,7 +30,9 @@
         <!-- Corps de la carte -->
         <div class="card-body">
           <h3 class="card-title">{{ categorie.title | uppercase }}</h3>
-          <button *ngIf="categorie.available" class="btn btn-primary" style="font-weight: bold;">Voir produits</button>
+          <button *ngIf="categorie.available" class="btn btn-primary" style="font-weight: bold;"        
+          [routerLink]="['/pc', categorie.id]">
+            Voir produits</button>
           <span *ngIf="!categorie.available" style="color: red; font-weight: bold;">Catégorie non disponible</span>
         </div>
       </div>

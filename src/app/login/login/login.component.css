@@ -1,0 +1,30 @@
+
+
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
+
+.custom-btn {
+    background-color: #4786eb;
+    border-color: #4786eb;
+  }
+  
+  .custom-btn:hover {
+    background-color: #3571c2; /* Couleur plus foncée lors du survol */
+    border-color: #3571c2;
+  }
+  .vh-100 {
+    background-color: #cdd9eb; /* Remplacez par la couleur de fond de votre choix */
+}

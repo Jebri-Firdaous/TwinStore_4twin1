@@ -1,20 +1,80 @@
 <div class="container">
+  <div class="form-group">
+   
+
   <div class="row mb-4">
+    <div>
+  </div>
     <!-- Barre de filtrage -->
-    <div class="col-md-4 d-flex align-items-center">
-      <select id="sortBy" class="form-control custom-select" style="padding: 10px 15px; font-size: 1rem; border-radius: 10px; border: 1px solid #ccc; background-color: #f9f9f9; transition: all 0.3s ease;">
-        <option value="" disabled selected>Trier par</option>
-        <option value="availability">Disponibilité</option>
-        <option value="category">Catégorie</option>
-        <option value="price">Prix</option>
-        <option value="name">Nom</option>
-      </select>
+    <div class="filter-bar">
+      <select 
+      id="main-select" 
+      class="filter-select" 
+      (change)="onFilterChange($event)">
+      <option value="" disabled selected>Choisir un filtre</option>
+      <option value="availability">Disponibilité</option>
+      <option value="category">Catégorie</option>
+      <option value="price">Prix</option>
+      <option value="Nom">Nom</option>
+
+
+    </select>
+
+
+      <!-- Select pour Disponibilité qui s'affiche conditionnellement -->
+   
+
+          <!-- Select pour Categories qui s'affiche conditionnellement -->
+          <div *ngIf="showCategorieFilter" class="category-filter">
+            <select 
+              id="category-select" 
+              class="filter-select" 
+              (change)="onCategoryChange($event)">
+              <option value="" disabled selected>Choisir une catégorie</option>
+              <option value="1">Hijabs et Écharpes</option>
+              <option value="2">Tuniques</option>
+              <option value="3">Robes</option>
+              <option value="4">Pantalons</option>
+              <option value="5">Jupes</option>
+              <option value="6">Sets et Ensembles</option>
+              <option value="7">Accessoires</option>
+              <option value="8">Sacs à dos</option>
+              <option value="9">Sacs à main</option>
+            </select>
+          </div>
+
+          <!-- Select pour Price qui s'affiche conditionnellement -->
+          <div *ngIf="ShowPriceFilter" class="category-filter">
+            <!-- Filtre croissant (flèche vers le haut) -->
+            <button class="price-filter" (click)="onPriceChange('asc')">
+              <i class="fa fa-arrow-up"></i> 
+            </button>
+          
+            <!-- Filtre décroissant (flèche vers le bas) -->
+            <button class="price-filter" (click)="onPriceChange('desc')">
+              <i class="fa fa-arrow-down"></i> 
+            </button>
+          </div>
+          <input *ngIf="ShowNomSearch" 
+          type="text" 
+          class="form-control" 
+          id="find" 
+          placeholder="Nom Produit"
+          [(ngModel)]="name" 
+          (input)="filterProduits()" 
+          #title="ngModel" />
+        </div>
+
+          
+          
+          
+          
     </div>
   </div>
 
   <!-- Liste des produits filtrés -->
   <div class="row">
-    <div class="col-12" *ngFor="let product of list" style="margin-bottom: 30px;">
+    <div class="col-12" *ngFor="let product of filteredList" style="margin-bottom: 30px;">
       <!-- Card structure -->
       <div class="card position-relative" style="border: 1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
         
@@ -32,8 +92,25 @@
           <!-- Column 2: Title and Description -->
           <div class="col-md-4">
             <div class="card-body">
-              <h5 class="card-title" style="font-size: 1.2rem; font-weight: bold; color: #333;">{{product.name}}</h5>
+              <!-- Product Name -->
+              <h4 class="card-title" style="font-weight: bold; color: #333;">{{product.name}}</h4>
+              
+              <!-- Product Description -->
               <p class="card-text" style="font-size: 0.9rem; color: #555;">{{product.description}}</p>
+              
+              <!-- Product Brand -->
+              <h6 style="margin-top: 15px;">
+                <span style="display: inline-block; background-color: #f8f9fa; color: #007bff; font-weight: bold; padding: 5px 10px; border-radius: 15px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); font-size: 0.9rem; text-transform: uppercase;">
+                  <i class="fas fa-tag" style="margin-right: 5px; color: #007bff;"></i>
+                  {{product.brand}}
+                </span>
+              </h6>
+
+              <!-- Product Promotion -->
+              <div *ngIf="product.promotion > 0" class="promotion-badge">
+                <i class="fas fa-percent" style="margin-right: 5px;"></i>
+                {{ product.promotion }}
+              </div>
             </div>
           </div>
 
@@ -43,7 +120,7 @@
               <h6 style="color: #4786eb; font-size: 30px; font-weight: bold;">
                 {{ product.price | number:'1.0-0' }} DT
               </h6>
-              <button class="btn btn-primary w-100" style="background-color: #4786eb; border: none; border-radius: 5px; padding: 10px;">Ajouter au panier</button>
+              <button [disabled]="!product.availability" class="btn btn-primary w-100" style="background-color: #4786eb; border: none; border-radius: 5px; padding: 10px;"   (click)="addLike()">Ajouter au panier</button>
             </div>
           </div>
         </div>

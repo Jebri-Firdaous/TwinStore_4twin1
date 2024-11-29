@@ -17,7 +17,6 @@ import { ProductsComponent } from './products/products.component';
 
 import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { RouterModule, Routes } from '@angular/router';
-import { CContactComponent } from './contact/c-contact/c-contact.component';
 import { ProductsCategoryComponent } from './products-category/products-category.component';
 
 

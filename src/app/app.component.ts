@@ -10,29 +10,24 @@ import { filter, map } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
   title = 'TwinStore';
+  isLoginPage = false;
+  isRegisterPage: boolean = false;
+
 
   constructor(
     private titleService: Title,
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
-//écoute des changements de route (titre)
+
   ngOnInit(): void {
-    // Écoute des événements de navigation
-    this.router.events
-      .pipe(
-        filter(event => event instanceof NavigationEnd), // Se concentre sur les événements de fin de navigation
-        map(() => {
-          let route = this.activatedRoute;
-          while (route.firstChild) {
-            route = route.firstChild;
-          }
-          return route.snapshot.data['title'] || 'TwinStore'; // Définit un titre par défaut
-        })
-      )
-      .subscribe((pageTitle: string) => {
-        this.title = pageTitle; // Met à jour la propriété `title` utilisée dans le composant
-        this.titleService.setTitle(pageTitle); // Met à jour le titre de la page dans le navigateur
-      });
+    // Surveille les changements de route pour ajuster la logique
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      // Vérifie si la route correspond à '/login' ou '/register'
+      this.isLoginPage = this.router.url === '/login';
+      this.isRegisterPage = this.router.url === '/register';
+    });
   }
 }

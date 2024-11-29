@@ -1,3 +1,6 @@
+.container{
+  margin-top: 30px;
+}
 .card {
   transition: transform 0.3s ease;
   border-radius: 10px;
@@ -12,7 +15,6 @@
 }
 
 .card-title {
-  font-size: 1.2rem;
   font-weight: bold;
   color: #333;
 }
@@ -51,4 +53,65 @@
 
 .out-of-stock {
   background-color: red; /* Couleur pour les produits épuisés */
+}
+.promotion-badge {
+  margin-top: 15px;
+  display: inline-block;
+  background: linear-gradient(45deg, #f00f0f, #df9c9c); /* Dégradé rouge sans l'orangé */
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px; /* Coins arrondis */
+  font-size: 1.2rem; /* Augmentation de la taille du texte */
+  text-transform: uppercase;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Ombre plus marquée */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Effet de transition fluide */
+}
+
+.promotion-badge:hover {
+  transform: scale(1.05); /* Effet de zoom au survol */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+}
+
+.promotion-badge i {
+  margin-right: 8px;
+}
+
+/* Style du bouton retour */
+.back {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #4786eb; /* Couleur principale */
+  color: #fff; /* Texte blanc */
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Style de l'icône et du texte */
+.back i {
+  margin-right: 8px; /* Espace entre l'icône et le texte */
+}
+
+/* Effet de survol pour le bouton */
+.back:hover {
+  transform: translateY(-2px); /* Légère élévation pour l'effet de survol */
+}
+
+/* Effet de focus pour améliorer l'accessibilité */
+.back:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(62, 79, 97, 0.6); /* Ombre légère au focus */
+}
+
+/* Style pour les petits écrans */
+@media (max-width: 576px) {
+  .back {
+    font-size: 14px; /* Taille de police plus petite sur les petits écrans */
+    padding: 8px 16px; /* Réduction de la taille du padding */
+  }
 }
