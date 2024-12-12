@@ -1,17 +1,21 @@
 import { Component } from '@angular/core';
-import { Product } from '../models/products';
+import { Router } from '@angular/router';
+
+
+import { Product } from '../../../models/products';
 import Swal from 'sweetalert2';
 
 
 
 @Component({
   selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  templateUrl: './product.component.html',
+  styleUrl: './product.component.css'
 })
-export class ProductsComponent {
+export class ProductComponent {
   name: string = "";
 
+  constructor(private router: Router) { }
 
   list: Product[] = [];
   filteredList: Product[] = []; 

@@ -1,22 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';  // Ajoutez ceci
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';  // Ajoutez ceci
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { ContainsPipe } from './contains.pipe'; // Importer le pipe ici
-import { FilterPipe  } from './filter.pipe';
-import { HighlightDirective } from './highlight.directive'; // Importez la directive
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AddProductComponent } from './add-product/add-product.component';
-import { ProductsComponent } from './products/products.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { HomeComponent } from './layouts/home/home.component';
+import { ContainsPipe } from './shared/pipes/contains.pipe'; // Importer le pipe ici
+import { FilterPipe  } from './shared/pipes/filter.pipe';
+import { HighlightDirective } from './shared/directives/highlight.directive'; // Importez la directive
+import { NotFoundComponent } from './layouts/not-found/not-found.component';
 
-import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductsCategoryComponent } from './products-category/products-category.component';
+import { ProductsCategoryComponent } from './features/products/products-category/products-category.component';
 
 
 @NgModule({
@@ -25,15 +22,11 @@ import { ProductsCategoryComponent } from './products-category/products-category
  HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ListCategoriesComponent,
     ContainsPipe ,
     FilterPipe,
     HighlightDirective,
     NotFoundComponent,
-    AddProductComponent,
-    ProductsCategoryComponent,
-    ProductsComponent,
-    NotFoundComponent,
+    ProductsCategoryComponent
 
   
     
@@ -42,7 +35,8 @@ import { ProductsCategoryComponent } from './products-category/products-category
     BrowserModule,
     AppRoutingModule,
     
-    FormsModule  // Ajoutez FormsModule ici
+    FormsModule , // Ajoutez FormsModule ici
+    ReactiveFormsModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

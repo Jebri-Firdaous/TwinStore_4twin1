@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Categorie } from '../models/categorie';
+import { Categorie } from '../../../models/categorie';
 import Swal from 'sweetalert2';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../models/products';
+import { Product } from '../../../models/products';
 import { Location } from '@angular/common'; 
 
 

@@ -1,32 +1,21 @@
 <div class="container">
   <div class="form-group">
-   
-
-  <div class="row mb-4">
-    <div>
-  </div>
-    <div class="filter-bar">
-      <select 
-      id="main-select" 
-      class="filter-select" 
-      (change)="onFilterChange($event)">
-      <option value="" disabled selected>Choisir un filtre</option>
-      <option value="availability">Disponibilité</option>
-      <option value="category">Catégorie</option>
-      <option value="price">Prix</option>
-      <option value="Nom">Nom</option>
-
-
-    </select>
-
-
-   
+    <div class="row mb-4">
+      <!-- Barre de filtre et bouton -->
+      <div class="filter-row" style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap;">
+        
+        <!-- Barre de filtre -->
+        <div class="filter-bar" style="flex: 1; display: flex; gap: 10px; align-items: center;">
+          <select id="main-select" class="filter-select" (change)="onFilterChange($event)" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
+            <option value="" disabled selected>Choisir un filtre</option>
+            <option value="availability">Disponibilité</option>
+            <option value="category">Catégorie</option>
+            <option value="price">Prix</option>
+            <option value="Nom">Nom</option>
+          </select>
 
           <div *ngIf="showCategorieFilter" class="category-filter">
-            <select 
-              id="category-select" 
-              class="filter-select" 
-              (change)="onCategoryChange($event)">
+            <select id="category-select" class="filter-select" (change)="onCategoryChange($event)" style="padding: 10px; border-radius: 5px; border: 1px solid #ddd;">
               <option value="" disabled selected>Choisir une catégorie</option>
               <option value="1">Hijabs et Écharpes</option>
               <option value="2">Tuniques</option>
@@ -41,75 +30,71 @@
           </div>
 
           <div *ngIf="ShowPriceFilter" class="category-filter">
-
-            <button class="price-filter" (click)="onPriceChange('asc')">
-              <i class="fa fa-arrow-up"></i> 
+            <button class="price-filter" (click)="onPriceChange('asc')" style="background: none; border: none; font-size: 18px;">
+              <i class="fa fa-arrow-up"></i>
             </button>
-          
-            <button class="price-filter" (click)="onPriceChange('desc')">
-              <i class="fa fa-arrow-down"></i> 
+            <button class="price-filter" (click)="onPriceChange('desc')" style="background: none; border: none; font-size: 18px;">
+              <i class="fa fa-arrow-down"></i>
             </button>
           </div>
-          <input *ngIf="ShowNomSearch" 
-          type="text" 
-          class="form-control" 
-          id="find" 
-          placeholder="Nom Produit"
-          [(ngModel)]="name" 
-          (input)="filterProduits()" 
-          #title="ngModel" />
+          
+          <input *ngIf="ShowNomSearch" type="text" class="form-control" id="find" placeholder="Nom Produit" [(ngModel)]="name" (input)="filterProduits()" #title="ngModel" style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ddd;" />
         </div>
+           <!-- Bouton Ajouter Produit -->
+           <div class="add-button" style="margin-top: 30px;">
+            <button class="add" [routerLink]="['/product/add-product']" style="padding: 10px 20px; background-color: transparent; color: white; border: none; border-radius: 5px; cursor: pointer;">
+              <img src="../../../../assets/images/produits/plus.png" alt="Ajouter" style="width: 20px; height: 20px;">
+            </button>
+          </div>
 
-          
-          
-          
-          
+     
+
+      </div>
+      
     </div>
+    
   </div>
 
+  <!-- Contenu principal -->
   <div class="row">
     <div class="col-12" *ngFor="let product of filteredList" style="margin-bottom: 30px;">
       <div class="card position-relative" style="border: 1px solid #ddd; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">
-        
         <div class="availability-badge" [ngClass]="product.availability ? 'in-stock' : 'out-of-stock'">
           {{ product.availability ? 'En stock' : 'Épuisé' }}
         </div>
-
         <div class="row no-gutters">
           <div class="col-md-4">
             <img [src]="product.image" [alt]="product.name" class="card-img" style="border-radius: 10px; height: 300px; object-fit: cover;">
           </div>
-
           <div class="col-md-4">
             <div class="card-body">
               <h4 class="card-title" style="font-weight: bold; color: #333;">{{product.name}}</h4>
-              
               <p class="card-text" style="font-size: 0.9rem; color: #555;">{{product.description}}</p>
-              
               <h6 style="margin-top: 15px;">
                 <span style="display: inline-block; background-color: #f8f9fa; color: #007bff; font-weight: bold; padding: 5px 10px; border-radius: 15px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); font-size: 0.9rem; text-transform: uppercase;">
                   <i class="fas fa-tag" style="margin-right: 5px; color: #007bff;"></i>
                   {{product.brand}}
                 </span>
               </h6>
-
               <div *ngIf="product.promotion > 0" class="promotion-badge">
                 <i class="fas fa-percent" style="margin-right: 5px;"></i>
-                {{ product.promotion }}
+                {{ product.promotion }} promo
               </div>
             </div>
           </div>
-
           <div class="col-md-4">
             <div class="card-body text-center">
               <h6 style="color: #4786eb; font-size: 30px; font-weight: bold;">
                 {{ product.price | number:'1.0-0' }} DT
               </h6>
-              <button [disabled]="!product.availability" class="btn btn-primary w-100" style="background-color: #4786eb; border: none; border-radius: 5px; padding: 10px;"   (click)="addLike()">Ajouter au panier</button>
+              <button [disabled]="!product.availability" class="btn btn-primary w-100" style="background-color: #4786eb; border: none; border-radius: 5px; padding: 10px;" (click)="addLike()">Ajouter au panier</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+    <router-outlet></router-outlet>
+
   </div>
+
 </div>
